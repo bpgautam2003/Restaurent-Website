@@ -1,0 +1,94 @@
+/* Navbar.css */
+
+.navbar-list {
+  list-style: none;
+  display: none;
+  gap: 4.2rem;
+}
+
+.navbar-link {
+  font-size: 1.7rem;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.navbar-link:hover,
+.navbar-link:active {
+  color: var(--helper);
+  transition: all 0.3s linear;
+}
+
+@media only screen and (min-width: 998px ) {
+  .navbar-list {
+    display: flex;
+  }
+}
+
+
+/* Header.css */
+
+.main-header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: black;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 120rem;
+  margin: 0 auto;
+  height: 6rem;
+  padding: 0 2.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 2rem;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logo-icon {
+  color: var(--helper);
+}
+
+.bag {
+  color: var(--white);
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.cart-icon {
+  position: relative;
+  display: flex;
+}
+
+.cart-icon span {
+  min-width: 20px;
+  text-align: center;
+  background-color: var(--helper);
+  padding: 2.5px;
+  position: absolute;
+  top: -5px;
+  right: -12px;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 998px) {
+  .header-content {
+    height: 8rem;
+  }
+}
