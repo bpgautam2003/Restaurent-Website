@@ -57,27 +57,13 @@ const Mdata = [
   },
   {
     id: 9,
-    pname: "Crispy Chicken Burger",
-    category: "burger",
-    price: 129,
-    imgsrc: "./images/burger-3.jpg",
-  },
-  {
-    id: 10,
-    pname: "Vegetable Singapore Noodles",
-    category: "noodles",
-    price: 385,
-    imgsrc: "./images/noodles-3.jpg",
-  },
-  {
-    id: 11,
     pname: "BBQ Chicken Burger",
     category: "burger",
     price: 189,
     imgsrc: "./images/burger-2.jpg",
   },
   {
-    id: 12,
+    id: 10,
     pname: "Chicken Garlic Noodles",
     category: "noodles",
     price: 345,
