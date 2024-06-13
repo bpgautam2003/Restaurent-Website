@@ -6,6 +6,7 @@ import { BsHandbagFill } from "react-icons/bs";
 import { useState } from "react";
 import Cart from "../Cart/Cart";
 import './Header.css'
+import Cdata from "../Cart/Cdata";
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
@@ -19,13 +20,13 @@ const Header = () => {
           </div>
         </NavLink>
         <div className="header-links">
-        <Navbar />
-        <span className="cart-icon" onClick={() => setShowCart(true)}>
-          <BsHandbagFill className="bag" />
-          <span>2</span>
-        </span>
-        {showCart && <Cart setShowCart={setShowCart} />}
-      </div>
+          <Navbar />
+          <span className="cart-icon" onClick={() => setShowCart(true)}>
+            <BsHandbagFill className="bag" />
+            {Cdata.length > 0 && <span>{Cdata.length}</span>}
+          </span>
+          {showCart && <Cart setShowCart={setShowCart} />}
+        </div>
       </div>
     </div>
   );

@@ -21,9 +21,7 @@
   box-sizing: border-box;
   font-family: "Plus Jakarta Sans", sans-serif;
 }
-/* body{
-  background-color: var(--helper);
-} */
+
 html{
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -31,23 +29,7 @@ html{
 }
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(90.25deg, #e00f32 23.97%, #B8001F 76.24%);
-  border-radius: 5px;
+  display: none;
 }
 
 h1{

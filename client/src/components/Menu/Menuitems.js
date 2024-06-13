@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Menu.css";
 import { BsPlusCircleFill } from "react-icons/bs";
-import { useState } from "react";
+import Cdata from '../Cart/Cdata.js';
+
 
 const Menuitems = (props) => {
   const [quantity, setQuantity] = useState(1);
 
-  const increaseQuantity = () =>{
+  const increaseQuantity = () => {
     setQuantity(quantity + 1);
-  }
+  };
 
-  const decreaseQuantity = () =>{
-    if(quantity > 1) setQuantity(quantity - 1);
-  }
+  const decreaseQuantity = () => {
+    if (quantity > 1) setQuantity(quantity - 1);
+  };
+
+  const addToCart = (data, quantity) => {
+
+    const existingData = Cdata.find(item => item.id === data.id);
+    if (existingData) {
+      existingData.quantity = quantity;
+    } else {
+      Cdata.push({ ...data, quantity: quantity });
+    }
+  };
 
   return (
     <section className="wrapper">
@@ -30,7 +41,7 @@ const Menuitems = (props) => {
             <span>{quantity}</span>
             <span onClick={increaseQuantity}>+</span>
           </div>
-          <button className="add-to-cart-button">
+          <button className="add-to-cart-button" onClick={() => addToCart(props, quantity)}>
             <BsPlusCircleFill size={15} />
             ADD TO CART
           </button>
@@ -41,4 +52,3 @@ const Menuitems = (props) => {
 };
 
 export default Menuitems;
-

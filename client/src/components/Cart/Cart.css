@@ -1,5 +1,19 @@
 .cart-products {
   flex-grow: 1;
+  overflow-y: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.cart-products {
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.cart-products::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
 
 .cart-product {
