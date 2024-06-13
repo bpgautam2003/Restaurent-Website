@@ -18,12 +18,14 @@ const Header = () => {
             <MdOutlineRestaurant size={30} className="logo-icon" /> TastyTales
           </div>
         </NavLink>
+        <div className="header-links">
         <Navbar />
         <span className="cart-icon" onClick={() => setShowCart(true)}>
           <BsHandbagFill className="bag" />
           <span>2</span>
         </span>
         {showCart && <Cart setShowCart={setShowCart} />}
+      </div>
       </div>
     </div>
   );
