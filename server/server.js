@@ -17,7 +17,7 @@ app.use(express.json());
 //cors middleware
 
 const corsOption = {
-    origin : "http://localhost:3000",
+    origin : "https://restaurent-website-opal.vercel.app",
     methods : "GET, POST, PUT, DELETE, PATCH",
     credentials : true
 }

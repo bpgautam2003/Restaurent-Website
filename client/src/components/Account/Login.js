@@ -22,7 +22,7 @@ const Login = (props) => {
     e.preventDefault();
     console.log(user);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch('https://restaurent-website-2.onrender.com/api/auth/login', {
         method: "POST", // Change GET to POST
         headers: {
           "Content-Type": "application/json" // Add Content-Type header
