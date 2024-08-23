@@ -1,51 +1,85 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import { useForm } from "react-hook-form";
 import './Account.css'
 
 const Register = (props) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    phone: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setUser({
+      ...user,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+    console.log(user);
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/register', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user) 
+      });
+
+      console.log(res);
+
+      if(res.ok){
+        alert("Registered successfully")
+        props.onformSwitch("Login")
+      }else{
+        alert("Error in Registration")
+
+      }
+
+    } catch (error) {
+      console.log("register error");
+    }
+  };
 
   return (
-
     <div className="register">
       <h2>Register</h2>
       <span>Register now and enjoy our tasty dishes</span>
       <form
         id="form"
         className="flex flex-col"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit} 
       >
         <input
           type="text"
-          {...register("userName", { required: true })}
+          name="username"
           placeholder="Username"
+          onChange={handleChange}
         />
-        {errors.userName && <p>Username is required.</p>}
         <input
           type="email"
-          {...register("email", { required: true })}
+          name="email"
           placeholder="email"
+          onChange={handleChange}
         />
-        {errors.email && <p>Email ID is required.</p>}
         <input
-          type="number"
-          {...register("number", { required: true })}
-          placeholder="mobile number"
-        />
-        {errors.number && <p>Mobile Number is required.</p>}
-        <input
-          {...register("password", { required: true })}
           type="text"
-          placeholder="password"
+          name="phone"
+          placeholder="mobile number"
+          onChange={handleChange}
         />
-        {errors.password && <p>Password is required.</p>}
-
+        <input
+          type="password" 
+          name="password"
+          placeholder="password"
+          onChange={handleChange}
+        />
         <button className="btn">
           Register <FiArrowRight />
         </button>
@@ -59,8 +93,6 @@ const Register = (props) => {
           Login
         </button>
       </div>
-
-
     </div>
   );
 };

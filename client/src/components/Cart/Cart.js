@@ -3,18 +3,50 @@ import { MdClose } from "react-icons/md";
 import CartItem from "./CartItem";
 import "./Cart.css";
 import Cdata from "./Cdata";
+import {loadStripe} from '@stripe/stripe-js'
+
 
 const Cart = ({ setShowCart }) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
     let ctotal = 0;
+
     Cdata.map((data) => {
       return ctotal = ctotal + (data.price * data.quantity);
     })
     setTotal(ctotal);
 
   }, [])
+
+  const handleCheckout = async() => {
+    console.log(Cdata)
+    const stripe = await loadStripe('pk_test_51NhA6gSBARtcUDbhoB5UchdoTVaU145717PY1I5tk7E0Y1i9mmGHgnRON9doR92YfiE85at9N3TpwH8AUsrCJ9Au00SViIgfzi');
+    const body = {
+      products : Cdata
+    }
+
+    const headers = {
+      "Content-Type" : "application/json"
+    }
+
+    const response = await fetch('http://localhost:5000/api/payment/create-checkout', {
+      method: "POST", 
+      headers: headers,
+      body: JSON.stringify(body) 
+    });
+
+    const session = await  response.json();
+
+    const result = stripe.redirectToCheckout({
+      sessionId : session.id
+    })
+
+    if(result.error){
+      console.log(result.error)
+    }
+
+  }
 
 
   return (
@@ -35,7 +67,7 @@ const Cart = ({ setShowCart }) => {
             <div className="text total">₹{total}</div>
           </div>
           <div className="button">
-            <button className="checkout-cta">Checkout</button>
+            <button className="checkout-cta" onClick={handleCheckout}>Checkout</button>
           </div>
         </div>
       </div>
